@@ -37,7 +37,7 @@
   {{{page_content}}}
   </main>
   <footer>
-  <footer class="main-footer">
+  <footer class="footer">
     <div class="footer-logos">
     <a href="https://www.facebook.com/share/1BnhbZCfZs/" target="_blank">
       <img src="public/imgs/logos/logo1.png" alt="Facebook">
