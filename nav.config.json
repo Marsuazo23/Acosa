@@ -1,11 +1,16 @@
 {
   "public": [
     {
-      "id": "Menu_SignIn",
-      "nav_url": "index.php?page=Sec_Login",
-      "nav_label":"<i class=\"fas fa-sign-in-alt\"></i>&nbsp;Iniciar Sesión"
+      "id": "aboutUs",
+      "nav_url": "index.php?page=Pages_aboutUs",
+      "nav_label":"<i class=\"fas fa-user\"></i>&nbsp;Nosotros"
     },
-     {
+    {
+      "id": "categories",
+      "nav_url": "index.php?page=Pages_categories",
+      "nav_label":"<i class=\"fas fa-user\"></i>&nbsp;Categorias"
+    },
+    {
       "id": "Menu_SignUp",
       "nav_url": "index.php?page=Sec_Register",
       "nav_label":"<i class=\"fas fa-sign-in-alt\"></i>&nbsp;Crear Cuenta"
