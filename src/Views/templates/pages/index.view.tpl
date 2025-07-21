@@ -1,0 +1,118 @@
+    <div class="slider-container">
+        <div class="slider">
+        <img src="public/imgs/slider/slider1.png" alt="Slide 1" class="slide active">
+        <img src="public/imgs/slider/slider2.jpg" alt="Slide 2" class="slide">
+        </div>
+
+        <button class="prev" aria-label="Previous slide">&#10094;</button>
+        <button class="next" aria-label="Next slide">&#10095;</button>
+    </div>
+ 
+    <h1>Mejores Ofertas</h1>
+        <div class="product-list">
+            {{foreach productsOnSale}}
+            <div class="product" data-productId="{{productId}}">
+                <div class="discount">-20%</div>
+                <img src="{{productImgUrl}}" alt="{{productName}}">
+                <h2>{{productName}}</h2>
+                <div class="product-content">
+                    <p>{{productDescription}}</p>
+                </div>
+                <span class="price">L. {{productPrice}}</span>
+            <div class="quantity">
+            <button class="btn-quantity" onclick="changeQuantity(this, -1)">-</button>
+            <input type="number" min="1" value="1" readonly>
+            <button class="btn-quantity" onclick="changeQuantity(this, 1)">+</button>
+        </div>
+        
+            <button class="add-to-cart">Comprar</button>        
+        </div>
+            {{endfor productsOnSale}}
+        </div>
+
+    <div class="center-button">
+        <button class="btn-buybest">COMPRAR MEJORES OFERTAS</button>
+    </div>
+
+    <div class="ads-container">
+        <img src="public/imgs/ads/ad1.png" alt="Publicidad 1">
+        <img src="public/imgs/ads/ad2.png" alt="Publicidad 2">
+    </div>
+
+    <h1>Iniciar Compra</h1>
+    <div class="product-list">
+            {{foreach featuredByCategory}}
+            <div class="product" data-productId="{{productId}}">
+                <img src="{{productImgUrl}}" alt="{{productName}}">
+                <h2>{{productName}}</h2>
+                <div class="product-content">
+                    <p>{{productDescription}}</p>
+                </div>
+                <span class="price">L. {{productPrice}}</span>
+            <div class="quantity">
+            <button class="btn-quantity" onclick="changeQuantity(this, -1)">-</button>
+            <input type="number" min="1" value="1" readonly>
+            <button class="btn-quantity" onclick="changeQuantity(this, 1)">+</button>
+        </div>
+        
+            <button class="add-to-cart">Comprar</button>        
+        </div>
+            {{endfor featuredByCategory}}
+        </div>
+    
+    <div class="center-button">
+        <button class="btn-buybest">COMPRAR MÁS PRODUCTOS</button>
+    </div>
+
+    <script>
+        let current = 0;
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+
+        function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+        }
+
+        function nextSlide() {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+        }
+
+        function prevSlide() {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+        }
+
+        nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetInterval();
+        });
+
+        prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetInterval();
+        });
+
+        let slideInterval = setInterval(nextSlide, 5000);
+
+        function resetInterval() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 5000);
+        }
+    </script>
+
+    <script>
+        function changeQuantity(button, change) {
+            const quantityDiv = button.closest('.quantity');
+            const input = quantityDiv.querySelector('input');
+            let currentValue = parseInt(input.value);
+            const newValue = currentValue + change;
+            if (newValue >= 1) {
+                input.value = newValue;
+            }
+        }
+     </script>
+
