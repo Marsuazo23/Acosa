@@ -32,7 +32,6 @@ class Index extends PublicController
         Site::addLink("public/css/products.css");
         Site::addLink("public/css/slider.css");
         Site::addLink("public/css/ads.css");
-        Site::addLink("public/css/footer.css");
 
         $viewData = [];
         $viewData["productsOnSale"] = ProductsDao::getDailyDeals();
