@@ -40,16 +40,16 @@
   <footer class="main-footer">
     <div class="footer-logos">
     <a href="https://www.facebook.com/share/1BnhbZCfZs/" target="_blank">
-      <img src="public/imgs/logos/logo1.png" alt="Logo 1">
+      <img src="public/imgs/logos/logo1.png" alt="Facebook">
     </a>
     <a href="https://www.instagram.com/acosahn?igsh=MTVzN3U3a2V1YmJ4bA==" target="_blank">
-      <img src="public/imgs/logos/logo2.png" alt="Logo 2">
+      <img src="public/imgs/logos/logo2.png" alt="Instagram">
     </a>
     <a href="https://wa.link/h6mins" target="_blank">
-      <img src="public/imgs/logos/logo3.png" alt="Logo 3">
+      <img src="public/imgs/logos/logo3.png" alt="Whatsapp">
     </a>
     <a href="https://x.com/ACOSAHN?t=iyPemUOMIBy0UjHuf9XOaA&s=08" target="_blank">
-      <img src="public/imgs/logos/logo4.png" alt="Logo 4">
+      <img src="public/imgs/logos/logo4.png" alt="X">
     </a>
     </div>
 
