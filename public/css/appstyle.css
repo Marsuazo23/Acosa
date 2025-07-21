@@ -919,10 +919,11 @@ header {
   align-items: center;
   background-color: #bc653d;
   color: #fff;
-  padding: 0;
+  padding: 0.6rem 1rem; 
   flex-wrap: wrap;
   z-index: 1001;
 }
+
 
 header h1 {
   position: absolute;
