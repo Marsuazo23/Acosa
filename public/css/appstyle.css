@@ -946,13 +946,71 @@ main {
 
 footer {
     background-color: #bc653d;
-    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    z-index: 1010
+    z-index: 1010;
+    display: block;
+    flex-direction: column;
 }
+
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap; 
+  margin-bottom: 1.5rem;
+}
+
+.footer-logos img {
+  width: 60px;
+  height: auto;
+  transition: transform 0.3s;
+}
+
+.footer-logos img:hover {
+  transform: scale(1.1);
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-nav a {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  transition: color 0.3s;
+  font-size: 1.2rem;
+}
+
+.footer-nav a:hover {
+  color: #ffe8d6;
+}
+
+.footer-brand {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1.2rem;
+  color: #fff;
+}
+
+.footer-copy {
+  font-size: 0.9rem;
+  color: #eee;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
 
 header .username {
     margin-left: auto;
@@ -1153,10 +1211,6 @@ a {
 
 a:focus {
     outline-style: none
-}
-
-a:visited {
-    color: #000
 }
 
 a.w48 {
