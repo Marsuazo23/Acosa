@@ -53,17 +53,19 @@
     </a>
     </div>
 
-      <nav class="footer-nav">
-        <a href="index.php">INICIO</a>
-        <a href="index.php?page=nosotros">NOSOTROS</a>
-        <a href="index.php?page=categorias">CATEGORÍAS</a>
-        <a href="index.php?page=productos">PRODUCTOS</a>
-        <a href="index.php?page=informacion">INFORMACIÓN</a>
-      </nav>
+    <nav class="footer-nav">
+      <a href="index.php">INICIO</a>
+      <a href="index.php?page=nosotros">NOSOTROS</a>
+      <a href="index.php?page=categorias">CATEGORÍAS</a>
+      <a href="index.php?page=productos">PRODUCTOS</a>
+      <a href="index.php?page=informacion">INFORMACIÓN</a>
+    </nav>
 
-      <div class="footer-copy">
-        Todos los Derechos Reservados {{~CURRENT_YEAR}} &copy;
-      </div>
+    <div class="footer-brand">Acosa</div>
+
+    <div class="footer-copy">
+      Todos los Derechos Reservados {{~CURRENT_YEAR}} &copy {{SITE_TITLE}}
+    </div>
   </footer>
 
   {{foreach EndScripts}}
