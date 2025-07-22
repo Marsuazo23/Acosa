@@ -57,7 +57,6 @@
       <a href="index.php">INICIO</a>
       <a href="index.php?page=Pages_aboutUs">NOSOTROS</a>
       <a href="index.php?page=Pages_categories">CATEGORÍAS</a>
-      <a href="index.php?page=productos">PRODUCTOS</a>
       <a href="index.php?page=informacion">INFORMACIÓN</a>
     </nav>
 

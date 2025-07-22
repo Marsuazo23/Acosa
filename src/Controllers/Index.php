@@ -37,7 +37,7 @@ class Index extends PublicController
         $viewData["productsOnSale"] = ProductsDao::getDailyDeals();
         $viewData["featuredByCategory"] = ProductsDao::getOneProductPerCategory();
 
-        Renderer::render("index", $viewData);
+        Renderer::render("pages/index", $viewData);
     }
 }
 ?>
