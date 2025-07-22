@@ -10,7 +10,8 @@
       </div>
       <span class="price">L. {{productPrice}}</span>
       
-      <button class="add-to-cart">Comprar</button>
+  <button class="add-to-cart" onclick="location.href='index.php?page=Pages\\detailProducts&productId={{productId}}'">Comprar</button>
+
     </div>
   {{endfor products}}
 </div>

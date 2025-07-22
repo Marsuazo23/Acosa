@@ -22,6 +22,13 @@ class Products extends Table {
     $sqlstr = "SELECT productId, productName, productDescription, productPrice, productImgUrl FROM products WHERE categoryId = :categoryId AND productStatus = 'ACT'";
     $params = ["categoryId" => $categoryId];
     return self::obtenerRegistros($sqlstr, $params);
+    }
+
+    public static function getProductById(int $productId) {
+    $sqlstr = "SELECT productId, productName, productDescription, productPrice, productImgUrl, productStatus FROM products WHERE productId = :productId AND productStatus = 'ACT'";
+    $params = ["productId" => $productId];
+    $registro = self::obtenerUnRegistro($sqlstr, $params);
+    return $registro;
+    }
   }
-}
 ?>
