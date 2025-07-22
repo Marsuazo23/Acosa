@@ -29,9 +29,9 @@ class Index extends PublicController
 {
     public function run(): void
     {
-        Site::addLink("public/css/products.css");
-        Site::addLink("public/css/slider.css");
-        Site::addLink("public/css/ads.css");
+        Site::addLink("public/css/Pages/products.css");
+        Site::addLink("public/css/Pages/slider.css");
+        Site::addLink("public/css/Pages/ads.css");
 
         $viewData = [];
         $viewData["productsOnSale"] = ProductsDao::getDailyDeals();
