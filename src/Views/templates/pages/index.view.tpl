@@ -9,26 +9,20 @@
     </div>
  
     <h1>Mejores Ofertas</h1>
-        <div class="product-list">
-            {{foreach productsOnSale}}
-            <div class="product" data-productId="{{productId}}">
-                <div class="discount">-20%</div>
-                <img src="{{productImgUrl}}" alt="{{productName}}">
-                <h2>{{productName}}</h2>
-                <div class="product-content">
-                    <p>{{productDescription}}</p>
-                </div>
-                <span class="price">L. {{productPrice}}</span>
-            <div class="quantity">
-            <button class="btn-quantity" onclick="changeQuantity(this, -1)">-</button>
-            <input type="number" min="1" value="1" readonly>
-            <button class="btn-quantity" onclick="changeQuantity(this, 1)">+</button>
-        </div>
-        
+    <div class="product-list">
+        {{foreach productsOnSale}}
+        <div class="product" data-productId="{{productId}}">
+            <div class="discount">-20%</div>
+            <img src="{{productImgUrl}}" alt="{{productName}}">
+            <h2>{{productName}}</h2>
+            <div class="product-content">
+                <p>{{productDescription}}</p>
+            </div>
+            <span class="price">L. {{productPrice}}</span>
             <button class="add-to-cart">Comprar</button>        
         </div>
-            {{endfor productsOnSale}}
-        </div>
+        {{endfor productsOnSale}}
+    </div>
 
     <div class="center-button">
         <button class="btn-buybest">COMPRAR MEJORES OFERTAS</button>
@@ -41,25 +35,19 @@
 
     <h1>Iniciar Compra</h1>
     <div class="product-list">
-            {{foreach featuredByCategory}}
-            <div class="product" data-productId="{{productId}}">
-                <img src="{{productImgUrl}}" alt="{{productName}}">
-                <h2>{{productName}}</h2>
-                <div class="product-content">
-                    <p>{{productDescription}}</p>
-                </div>
-                <span class="price">L. {{productPrice}}</span>
-            <div class="quantity">
-            <button class="btn-quantity" onclick="changeQuantity(this, -1)">-</button>
-            <input type="number" min="1" value="1" readonly>
-            <button class="btn-quantity" onclick="changeQuantity(this, 1)">+</button>
-        </div>
-        
+        {{foreach featuredByCategory}}
+        <div class="product" data-productId="{{productId}}">
+            <img src="{{productImgUrl}}" alt="{{productName}}">
+            <h2>{{productName}}</h2>
+            <div class="product-content">
+                <p>{{productDescription}}</p>
+            </div>
+            <span class="price">L. {{productPrice}}</span>
             <button class="add-to-cart">Comprar</button>        
         </div>
-            {{endfor featuredByCategory}}
-        </div>
-    
+        {{endfor featuredByCategory}}
+    </div>
+
     <div class="center-button">
         <button class="btn-buybest">COMPRAR MÁS PRODUCTOS</button>
     </div>
@@ -104,15 +92,4 @@
         }
     </script>
 
-    <script>
-        function changeQuantity(button, change) {
-            const quantityDiv = button.closest('.quantity');
-            const input = quantityDiv.querySelector('input');
-            let currentValue = parseInt(input.value);
-            const newValue = currentValue + change;
-            if (newValue >= 1) {
-                input.value = newValue;
-            }
-        }
-     </script>
 
