@@ -15,11 +15,25 @@ class categoryProducts extends PublicController
         $categoryId = isset($_GET["categoryId"]) ? intval($_GET["categoryId"]) : 0;
         $categoryName = isset($_GET["name"]) ? urldecode($_GET["name"]) : "Categoría";
 
+        $products = Products::getProductsByCategory($categoryId);
+
+        foreach ($products as &$product) {
+            if (!empty($product['discount'])) {
+                $product['discount'] = '<div class="discount">' . $product['discount'] . '</div>';
+                $product['originalPrice'] = '<span class="original-price">L. ' . number_format($product['originalPrice'], 2) . '</span> ';
+            } else {
+                $product['discount'] = '';
+                $product['originalPrice'] = '';
+            }
+        }
+        unset($product);
+
         $viewData = [
             "categoryName" => $categoryName,
-            "products" => Products::getProductsByCategory($categoryId)
+            "products" => $products
         ];
 
         Renderer::render("pages/categoryProducts", $viewData);
     }
 }
+

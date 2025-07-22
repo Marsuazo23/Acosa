@@ -3,8 +3,8 @@ namespace Dao\Products;
 use Dao\Table;
 
 class Products extends Table {
-    public static function getDailyDeals() {
-      $sqlstr = "SELECT p.productId, p.productName, p.productDescription, s.salePrice as productPrice, p.productImgUrl, p.productStatus FROM products p INNER JOIN sales s ON p.productId = s.productId WHERE s.saleStart <= NOW() AND s.saleEnd >= NOW()";
+      public static function getDailyDeals() {
+      $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productImgUrl, p.productPrice AS originalPrice, s.salePrice AS productPrice, CONCAT('-', ROUND(100 - ((s.salePrice / p.productPrice) * 100)), '%') AS discount FROM products p INNER JOIN sales s ON p.productId = s.productId WHERE s.saleStart <= NOW() AND s.saleEnd >= NOW() AND p.productStatus = 'ACT'";
       $params = [];
       $registros = self::obtenerRegistros($sqlstr, $params);
       return $registros;
@@ -17,13 +17,17 @@ class Products extends Table {
       return $registros;
     }
     
-    public static function getProductsByCategory($categoryId)
-    {
-    $sqlstr = "SELECT productId, productName, productDescription, productPrice, productImgUrl FROM products WHERE categoryId = :categoryId AND productStatus = 'ACT'";
-    $params = ["categoryId" => $categoryId];
-    return self::obtenerRegistros($sqlstr, $params);
+    public static function getProductsByCategory($categoryId){
+      if ($categoryId == 5) {
+        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productImgUrl, p.productPrice AS originalPrice, s.salePrice AS productPrice, CONCAT('-', ROUND(100 - ((s.salePrice / p.productPrice) * 100)), '%') AS discount FROM products p INNER JOIN sales s ON p.productId = s.productId AND s.saleStart <= NOW() AND s.saleEnd >= NOW() WHERE p.productStatus = 'ACT'";
+        $params = [];
+        } else {
+        $sqlstr = "SELECT p.productId, p.productName, p.productDescription, p.productImgUrl, p.productPrice AS originalPrice, IF(s.salePrice IS NOT NULL AND s.saleStart <= NOW() AND s.saleEnd >= NOW(), s.salePrice, p.productPrice) AS productPrice, IF(s.salePrice IS NOT NULL AND s.saleStart <= NOW() AND s.saleEnd >= NOW(), CONCAT('-', ROUND(100 - ((s.salePrice / p.productPrice) * 100)), '%'), NULL) AS discount FROM products p LEFT JOIN sales s ON p.productId = s.productId  AND s.saleStart <= NOW() AND s.saleEnd >= NOW() WHERE p.categoryId = :categoryId AND p.productStatus = 'ACT'";
+        $params = ["categoryId" => $categoryId];
+      }
+      return self::obtenerRegistros($sqlstr, $params);
     }
-
+    
     public static function getProductById(int $productId) {
     $sqlstr = "SELECT productId, productName, productDescription, productPrice, productImgUrl, productStatus FROM products WHERE productId = :productId AND productStatus = 'ACT'";
     $params = ["productId" => $productId];

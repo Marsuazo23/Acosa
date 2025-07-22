@@ -12,13 +12,15 @@
     <div class="product-list">
         {{foreach productsOnSale}}
         <div class="product" data-productId="{{productId}}">
-            <div class="discount">-20%</div>
+            <div class="discount">{{discount}}</div> 
             <img src="{{productImgUrl}}" alt="{{productName}}">
             <h2>{{productName}}</h2>
             <div class="product-content">
                 <p>{{productDescription}}</p>
             </div>
-            <span class="price">L. {{productPrice}}</span>
+            <span class="price">
+            <span class="original-price">L. {{originalPrice}}</span> L. {{productPrice}}
+            </span>
             <button class="add-to-cart">Comprar</button>        
         </div>
         {{endfor productsOnSale}}
