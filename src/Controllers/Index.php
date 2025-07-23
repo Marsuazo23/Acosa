@@ -22,6 +22,7 @@ namespace Controllers;
  */
 
 use \Dao\Products\Products as ProductsDao;
+use \Dao\Products\Categories as CategoriesDao;
 use \Views\Renderer as Renderer;
 use \Utilities\Site as Site;
 
@@ -41,7 +42,7 @@ class Index extends PublicController
         $viewData["productsOnSale"] = ProductsDao::getDailyDeals();
 
         // Obtiene un producto destacado por cada categoría
-        $viewData["featuredByCategory"] = ProductsDao::getOneProductPerCategory();
+        $viewData["featuredByCategory"] = CategoriesDao::getOneProductPerCategory();
 
         // Renderiza la vista y pasa los datos recopilados
         Renderer::render("pages/index", $viewData);

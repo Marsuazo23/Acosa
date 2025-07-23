@@ -4,7 +4,7 @@ namespace Controllers\Pages;
 use \Utilities\Site as Site;
 use Views\Renderer;
 use Controllers\PublicController;
-use Dao\Products\Products;
+use Dao\Products\Categories;
 
 class categoryProducts extends PublicController
 {
@@ -20,7 +20,7 @@ class categoryProducts extends PublicController
         $categoryName = isset($_GET["name"]) ? urldecode($_GET["name"]) : "Categoría";
 
         // Llama al modelo para obtener todos los productos de esa categoría
-        $products = Products::getProductsByCategory($categoryId);
+        $products = Categories::getProductsByCategory($categoryId);
 
         // Recorre los productos para formatear los datos visualmente
         foreach ($products as &$product) {
