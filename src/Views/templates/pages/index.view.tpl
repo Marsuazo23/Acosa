@@ -30,9 +30,12 @@
     </div>
 
     <div class="ads-container">
-        <img src="public/imgs/ads/ad1.png" alt="Publicidad 1">
-        <img src="public/imgs/ads/ad2.png" alt="Publicidad 2">
+        <img src="public/imgs/ads/ad1.png" alt="Publicidad 1" 
+            onclick="window.location.href='index.php?page=Pages\\detailProducts&productId=18'">
+        <img src="public/imgs/ads/ad2.png" alt="Publicidad 2" 
+            onclick="window.location.href='index.php?page=Pages\\detailProducts&productId=17'">
     </div>
+
 
     <h1>Iniciar Compra</h1>
     <div class="product-list">
