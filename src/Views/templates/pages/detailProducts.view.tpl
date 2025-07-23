@@ -15,8 +15,7 @@
         <div id="stock-message" class="stock-message">
             No hay más stock disponible.
         </div>
-
-
+        
         <button class="add-to-cart">Agregar al carrito</button>
     </div>
 </div>

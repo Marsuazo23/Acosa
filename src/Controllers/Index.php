@@ -29,14 +29,21 @@ class Index extends PublicController
 {
     public function run(): void
     {
+        // Se agregan los archivos CSS 
         Site::addLink("public/css/Pages/products.css");
         Site::addLink("public/css/Pages/slider.css");
         Site::addLink("public/css/Pages/ads.css");
 
+        // Array que contendrá los datos a enviar a la vista
         $viewData = [];
+
+        // Obtiene los productos en oferta diaria desde la base de datos
         $viewData["productsOnSale"] = ProductsDao::getDailyDeals();
+
+        // Obtiene un producto destacado por cada categoría
         $viewData["featuredByCategory"] = ProductsDao::getOneProductPerCategory();
 
+        // Renderiza la vista y pasa los datos recopilados
         Renderer::render("pages/index", $viewData);
     }
 }
