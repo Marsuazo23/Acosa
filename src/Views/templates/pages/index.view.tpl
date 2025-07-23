@@ -21,13 +21,15 @@
             <span class="price">
             <span class="original-price">L. {{originalPrice}}</span> L. {{productPrice}}
             </span>
-            <button class="add-to-cart">Comprar</button>        
+            <button class="add-to-cart" onclick="location.href='index.php?page=Pages\\detailProducts&productId={{productId}}'">Comprar</button>        
         </div>
         {{endfor productsOnSale}}
     </div>
 
-    <div class="center-button">
-        <button class="btn-buybest">COMPRAR MEJORES OFERTAS</button>
+        <div class="center-button">
+        <button class="btn-buybest" onclick="location.href='index.php?page=Pages\\categoryProducts&categoryId=5&name=Ofertas'">
+            COMPRAR MEJORES OFERTAS
+        </button>
     </div>
 
     <div class="ads-container">
@@ -45,13 +47,13 @@
                 <p>{{productDescription}}</p>
             </div>
             <span class="price">L. {{productPrice}}</span>
-            <button class="add-to-cart">Comprar</button>        
+            <button class="add-to-cart" onclick="location.href='index.php?page=Pages\\detailProducts&productId={{productId}}'">Comprar</button>        
         </div>
         {{endfor featuredByCategory}}
     </div>
 
     <div class="center-button">
-        <button class="btn-buybest">COMPRAR MÁS PRODUCTOS</button>
+        <button class="add-to-cart" onclick="location.href='index.php?page=Pages_categories'">COMPRAR MÁS PRODUCTOS</button>
     </div>
 
     <script>

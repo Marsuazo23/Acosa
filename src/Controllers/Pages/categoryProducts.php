@@ -20,13 +20,16 @@ class categoryProducts extends PublicController
         foreach ($products as &$product) {
             if (!empty($product['discount'])) {
                 $product['discount'] = '<div class="discount">' . $product['discount'] . '</div>';
-                $product['originalPrice'] = '<span class="original-price">L. ' . number_format($product['originalPrice'], 2) . '</span> ';
+                $product['originalPrice'] = '<span class="original-price">L. ' . number_format($product['originalPrice'], 2, '.', ',') . '</span> ';
+                $product['productPrice'] = number_format($product['productPrice'], 2, '.', ',');
             } else {
                 $product['discount'] = '';
                 $product['originalPrice'] = '';
+                $product['productPrice'] = number_format($product['productPrice'], 2, '.', ',');
             }
         }
         unset($product);
+
 
         $viewData = [
             "categoryName" => $categoryName,

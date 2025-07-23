@@ -19,11 +19,15 @@ class detailProducts extends PublicController
 
         if ($productId > 0) {
             $product = ProductsDao::getProductById($productId);
-            if ($product) {
-                $viewData['product'] = $product;
-            } else {
-                Site::redirectTo("index.php?page=Pages\categories");
-                return;
+           if ($product) {
+                $product['originalPrice'] = number_format($product['originalPrice'], 2, '.', ',');
+                $product['productPrice'] = number_format($product['productPrice'], 2, '.', ',');
+                if (!empty($product['discount'])) {
+                    $product['displayPrice'] = '<span class="original-price">L. ' . $product['originalPrice'] . '</span> L. ' . $product['productPrice'];
+                } else {
+                    $product['displayPrice'] = 'L. ' . $product['originalPrice'];
+                }
+                $viewData = $product;
             }
         } else {
             Site::redirectTo("index.php?page=Pages\categories");

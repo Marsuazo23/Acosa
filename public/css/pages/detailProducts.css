@@ -98,3 +98,14 @@
 .product .add-to-cart:hover {
     background-color: #9c4e2c;
 }
+
+.original-price {
+  text-decoration: line-through;
+  color: gray;
+  margin-right: 10px;
+}
+
+.discounted-price {
+  color: #d62828;
+  font-weight: bold;
+}

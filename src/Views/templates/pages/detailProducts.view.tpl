@@ -4,26 +4,25 @@
     <img src="{{productImgUrl}}" alt="{{productName}}">
     <div>
       <p>{{productDescription}}</p>
-      <span class="price">L. {{productPrice}}</span>
+        <span class="price">{{displayPrice}}</span>
       <div class="quantity">
             <button class="btn-quantity" onclick="changeQuantity(this, -1)">-</button>
             <input type="number" min="1" value="1" readonly>
             <button class="btn-quantity" onclick="changeQuantity(this, 1)">+</button>
-      </div> <!-- cierre correcto aquí -->
+      </div> 
       
       <button class="add-to-cart">Agregar al carrito</button>
     </div>
 </div>
 
-
 <script>
-        function changeQuantity(button, change) {
-            const quantityDiv = button.closest('.quantity');
-            const input = quantityDiv.querySelector('input');
+    function changeQuantity(button, change) {
+        const quantityDiv = button.closest('.quantity');
+        const input = quantityDiv.querySelector('input');
             let currentValue = parseInt(input.value);
-            const newValue = currentValue + change;
-            if (newValue >= 1) {
-                input.value = newValue;
-            }
+        const newValue = currentValue + change;
+        if (newValue >= 1) {
+            input.value = newValue;
         }
-     </script>
+    }
+</script>

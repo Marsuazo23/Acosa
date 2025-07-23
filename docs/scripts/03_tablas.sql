@@ -20,12 +20,12 @@
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --Tabla de Ventas
-     CREATE TABLE `sales` (
-    `saleId` int(11) NOT NULL AUTO_INCREMENT,
-    `productId` int(11) NOT NULL,
-    `salePrice` decimal(10,2) NOT NULL,
-    `saleStart` datetime NOT NULL,
-    `saleEnd` datetime NOT NULL,
+  CREATE TABLE `sales` (
+    `saleId` INT(11) NOT NULL AUTO_INCREMENT,
+    `productId` INT(11) NOT NULL,
+    `discountPercent` DECIMAL(5,2) NOT NULL COMMENT 'Porcentaje de descuento (ej: 20.00 para 20%)',
+    `saleStart` DATETIME NOT NULL,
+    `saleEnd` DATETIME NOT NULL,
     PRIMARY KEY (`saleId`),
     KEY `fk_sales_products_idx` (`productId`),
     CONSTRAINT `fk_sales_products` FOREIGN KEY (`productId`) REFERENCES `products` (`productId`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -82,14 +82,8 @@
 
 
 --Datos en la tabla de Ventas
-  INSERT INTO `sales` (`saleId`, `productId`, `salePrice`, `saleStart`, `saleEnd`) VALUES
-  (1, 1, 63.92, '2025-07-18 00:00:00', '2025-10-31 23:59:59');
-
-  INSERT INTO `sales` (`saleId`, `productId`, `salePrice`, `saleStart`, `saleEnd`) VALUES
-  (2, 8, 116.10, '2025-07-18 00:00:00', '2025-10-31 23:59:59');
-
-  INSERT INTO `sales` (`saleId`, `productId`, `salePrice`, `saleStart`, `saleEnd`) VALUES
-  (3, 12, 1076.08, '2025-07-18 00:00:00', '2025-10-31 23:59:59');
-
-  INSERT INTO `sales` (`saleId`, `productId`, `salePrice`, `saleStart`, `saleEnd`) VALUES
-  (4, 16, 476.00, '2025-07-18 00:00:00', '2025-10-31 23:59:59');
+  INSERT INTO `sales` (`saleId`, `productId`, `discountPercent`, `saleStart`, `saleEnd`) VALUES
+  (1, 1, 20.00, '2025-07-18 00:00:00', '2025-10-31 23:59:59'),
+  (2, 8, 10.00, '2025-07-18 00:00:00', '2025-10-31 23:59:59'),
+  (3, 12, 15.00, '2025-07-18 00:00:00', '2025-10-31 23:59:59'),
+  (4, 16, 25.00, '2025-07-18 00:00:00', '2025-10-31 23:59:59');
