@@ -5,9 +5,10 @@
     border-radius: 12px;
     background: #fff;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    
+
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap; 
     gap: 2rem;
     align-items: flex-start;
     text-align: left;
@@ -16,13 +17,17 @@
 
 .product-detail img {
     flex: 0 1 45%;
+    max-width: 100%;      
+    height: auto;         
     border-radius: 10px;
     object-fit: cover;
     max-height: 400px;
+    min-width: 270px;     
 }
 
 .product-detail > div {
-    flex: 1 1 55%;
+    flex: 1 1 45%;
+    min-width: 260px;     
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -108,4 +113,11 @@
 .discounted-price {
   color: #d62828;
   font-weight: bold;
+}
+
+.stock-message {
+    color: red;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    display: none;
 }

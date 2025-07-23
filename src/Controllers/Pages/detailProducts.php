@@ -22,6 +22,7 @@ class detailProducts extends PublicController
            if ($product) {
                 $product['originalPrice'] = number_format($product['originalPrice'], 2, '.', ',');
                 $product['productPrice'] = number_format($product['productPrice'], 2, '.', ',');
+                $product['stock'] = intval($product['stock']);
                 if (!empty($product['discount'])) {
                     $product['displayPrice'] = '<span class="original-price">L. ' . $product['originalPrice'] . '</span> L. ' . $product['productPrice'];
                 } else {
@@ -32,9 +33,7 @@ class detailProducts extends PublicController
         } else {
             Site::redirectTo("index.php?page=Pages\categories");
             return;
-        }
-            
-        $viewData = $product;
+        }    
         Renderer::render("pages/detailProducts", $viewData);
     }
 }

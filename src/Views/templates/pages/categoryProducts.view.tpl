@@ -6,9 +6,6 @@
       {{discount}}
       <img src="{{productImgUrl}}" alt="{{productName}}">
       <h2>{{productName}}</h2>
-      <div class="product-content">
-        <p>{{productDescription}}</p>
-      </div>
       <span class="price">
         {{originalPrice}}L. {{productPrice}}
       </span>
