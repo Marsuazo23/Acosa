@@ -16,16 +16,16 @@
   </div>
 
   <div class="categories-row">
-    <a href="index.php?page=Pages\categoryProducts&categoryId=3&name=Smart Home">
+    <a href="index.php?page=Pages\categoryProducts&categoryId=3&name=Electrónica">
       <div class="category-card">
-        <div class="category-overlay">Smart Home</div>
-        <img src="public/imgs/categories/categoria3.jpg" alt="Smart Home">
+        <div class="category-overlay">Electrónica</div>
+        <img src="public/imgs/categories/categoria3.jpg" alt="Electrónica">
       </div>
     </a>
-    <a href="index.php?page=Pages\categoryProducts&categoryId=4&name=Gaming">
+    <a href="index.php?page=Pages\categoryProducts&categoryId=4&name=Cómputo">
       <div class="category-card">
-        <div class="category-overlay">Gaming</div>
-        <img src="public/imgs/categories/categoria4.jpg" alt="Gaming">
+        <div class="category-overlay">Cómputo</div>
+        <img src="public/imgs/categories/categoria4.jpg" alt="Cómputo">
       </div>
     </a>
     <a href="index.php?page=Pages\categoryProducts&categoryId=5&name=Ofertas">
