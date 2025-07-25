@@ -16,7 +16,7 @@ class Paging
     if ($pagesCount <= 7) {
       foreach (range(1, $pagesCount) as $page) {
         $pages[] = [
-          'url' => $url . '&pageNum=' . $page,
+          'url' => $url . '&itemsPerPage=' . $itemsPerPage . '&pageNum=' . $page,
           'page' => $page,
           'active' => $page == $currentPage
         ];
