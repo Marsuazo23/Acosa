@@ -34,3 +34,5 @@ CREATE TABLE
         KEY `productId_idx` (`productId`),
         CONSTRAINT `carretillaanon_prd_key` FOREIGN KEY (`productId`) REFERENCES `products` (`productId`) ON DELETE NO ACTION ON UPDATE NO ACTION
     );
+
+    

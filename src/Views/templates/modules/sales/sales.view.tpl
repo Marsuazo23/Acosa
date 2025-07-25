@@ -1,4 +1,4 @@
-<h1>Lista de Ventas</h1>
+<h1>Lista de Ofertas</h1>
 <section class="WWList">
     <table>
         <thead>

@@ -16,19 +16,39 @@ class Nav
     public static function setNavContext()
     {
         $tmpNAVIGATION = Context::getContextByKey("NAVIGATION");
-        if ($tmpNAVIGATION === "") {
+        if (empty($tmpNAVIGATION)) {
             $tmpNAVIGATION = [];
             $userID = Security::getUserId();
-            $navigationData = self::getNavFromJson()["private"];
-            foreach ($navigationData as $navEntry) {
-                if (Security::isAuthorized($userID, $navEntry["id"], 'MNU')) {
-                    $tmpNAVIGATION[] = $navEntry;
+
+            if ($userID === 0) { 
+                // No logueado, menú público completo
+                $tmpNAVIGATION = self::getNavFromJson()["public"];
+            } else {
+                // Usuario logueado: cargar menú privado filtrado por permisos
+                $navigationData = self::getNavFromJson()["private"];
+                foreach ($navigationData as $navEntry) {
+                    if (Security::isAuthorized($userID, $navEntry["id"], 'MNU')) {
+                        $tmpNAVIGATION[] = $navEntry;
+                    }
+                }
+                // Si no tiene ningún permiso privado, mostrar menú público
+                // Pero sin opciones "Iniciar Sesión" y "Crear Cuenta"
+                if (empty($tmpNAVIGATION)) {
+                    $publicMenu = self::getNavFromJson()["public"];
+                    // Filtrar las opciones de login y registro
+                    $tmpNAVIGATION = array_filter($publicMenu, function($item) {
+                        return !in_array($item["id"], ["Menu_SignIn", "Menu_SignUp"]);
+                    });
+                    // Reindexar array para evitar claves discontinuas
+                    $tmpNAVIGATION = array_values($tmpNAVIGATION);
                 }
             }
+
             $saveToSession = intval(Context::getContextByKey("DEVELOPMENT")) !== 1;
             Context::setContext("NAVIGATION", $tmpNAVIGATION, $saveToSession);
         }
     }
+
 
     public static function invalidateNavData()
     {
