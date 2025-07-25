@@ -21,7 +21,14 @@ class Categories extends Table {
       return $registros;
     }
     
-    public static function getProductsByCategory($categoryId){
+    public static function getProductsByCategory($categoryId, $limit = 0, $offset = 0){
+      $limitOffsetStr = "";
+      $params = [];
+      if ($limit > 0) {
+          $limitOffsetStr = " LIMIT :limit OFFSET :offset";
+          $params = ["limit" => $limit, "offset" => $offset];
+      }
+      
       if ($categoryId == 5) {
           $sqlstr = "SELECT 
                         p.productId, 
@@ -34,9 +41,8 @@ class Categories extends Table {
                     FROM products p 
                     INNER JOIN sales s ON p.productId = s.productId 
                     AND s.saleStart <= NOW() AND s.saleEnd >= NOW() 
-                    WHERE p.productStatus = 'ACT'
-                    ORDER BY p.productName ASC";
-          $params = [];
+                    WHERE p.productStatus = 'ACT' 
+                    ORDER BY p.productName ASC" . $limitOffsetStr;
       } else {
           $sqlstr = "SELECT 
                         p.productId, 
@@ -45,18 +51,35 @@ class Categories extends Table {
                         p.productImgUrl, 
                         p.productPrice AS originalPrice, 
                         IF(s.discountPercent IS NOT NULL AND s.saleStart <= NOW() AND s.saleEnd >= NOW(), 
-                            ROUND(p.productPrice - (p.productPrice * s.discountPercent / 100), 2), 
-                            p.productPrice) AS productPrice, 
+                          ROUND(p.productPrice - (p.productPrice * s.discountPercent / 100), 2), 
+                          p.productPrice) AS productPrice, 
                         IF(s.discountPercent IS NOT NULL AND s.saleStart <= NOW() AND s.saleEnd >= NOW(), 
-                            CONCAT('-', CAST(s.discountPercent AS UNSIGNED), '%'),  
-                            NULL) AS discount 
+                          CONCAT('-', CAST(s.discountPercent AS UNSIGNED), '%'),  
+                          NULL) AS discount 
                     FROM products p 
                     LEFT JOIN sales s ON p.productId = s.productId 
                     AND s.saleStart <= NOW() AND s.saleEnd >= NOW() 
-                    WHERE p.categoryId = :categoryId AND p.productStatus = 'ACT' ORDER BY p.productName ASC";
-          $params = ["categoryId" => $categoryId];
+                    WHERE p.categoryId = :categoryId AND p.productStatus = 'ACT' 
+                    ORDER BY p.productName ASC" . $limitOffsetStr;
+          $params["categoryId"] = $categoryId;
       }
       return self::obtenerRegistros($sqlstr, $params);
+    }
+
+    public static function countProductsByCategory($categoryId) {
+      if ($categoryId == 5) {
+          $sqlstr = "SELECT COUNT(*) as total FROM products p 
+                    INNER JOIN sales s ON p.productId = s.productId 
+                    AND s.saleStart <= NOW() AND s.saleEnd >= NOW() 
+                    WHERE p.productStatus = 'ACT'";
+          $params = [];
+      } else {
+          $sqlstr = "SELECT COUNT(*) as total FROM products p 
+                    WHERE p.categoryId = :categoryId AND p.productStatus = 'ACT'";
+          $params = ["categoryId" => $categoryId];
+      }
+      $row = self::obtenerUnRegistro($sqlstr, $params);
+      return $row ? intval($row["total"]) : 0;
     }
   }
 ?>

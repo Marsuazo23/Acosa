@@ -1180,13 +1180,27 @@ button {
 }
 
 a.btn {
-    color: #000;
+    color: #fff; 
     text-decoration: none;
     border-radius: 50%;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    background-color: #25a8ff
+    background-color: #bc653d; 
+    padding: 0.5rem 0.8rem; 
+    width: 36px;
+    height: 36px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    cursor: pointer;
+}
+
+a.btn:hover,
+a.btn:focus {
+    background-color: #9b4f2b; 
+    color: #fff;
+    outline: none;
 }
 
 button:hover {

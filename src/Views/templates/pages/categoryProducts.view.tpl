@@ -13,3 +13,7 @@
     </div>
   {{endfor products}}
 </div>
+
+<div class="pagination-container">
+    {{pagination}}
+</div>
