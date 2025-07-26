@@ -34,7 +34,7 @@ class detailProducts extends PublicController
                 $product['productPrice'] = number_format($product['productPrice'], 2, '.', ',');
 
                 // Convierte el stock a entero para asegurarse del tipo
-                $product['stock'] = intval($product['stock']);
+                $product['productStock'] = intval($product['productStock']);
 
                 // Si el producto tiene un descuento activo, prepara el HTML para mostrar precio tachado y precio con descuento
                 if (!empty($product['discount'])) {

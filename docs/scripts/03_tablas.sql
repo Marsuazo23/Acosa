@@ -9,7 +9,7 @@
     `productImgUrl` VARCHAR(255) NOT NULL,
     `productStatus` CHAR(3) NOT NULL,
     `categoryId` INT(11) NOT NULL,
-    `stock` INT(11) NOT NULL DEFAULT 0,
+    `productStock` INT(11) NOT NULL DEFAULT 0,
     PRIMARY KEY (`productId`)
   ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 

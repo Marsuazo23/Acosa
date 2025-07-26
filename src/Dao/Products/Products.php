@@ -20,7 +20,7 @@ class Products extends Table {
     public static function getProductById(int $productId) {
       $sqlstr = "SELECT p.productId, p.productName, p.productDescription, 
                         p.productPrice AS originalPrice, p.productImgUrl, 
-                        p.productStatus, p.stock, 
+                        p.productStatus, p.productStock, 
                         ROUND(p.productPrice - (p.productPrice * s.discountPercent / 100), 2) AS productPrice, 
                         CONCAT('-', CAST(s.discountPercent AS UNSIGNED), '%') AS discount 
                 FROM products p 

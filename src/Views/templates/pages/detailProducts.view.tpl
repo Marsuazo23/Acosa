@@ -8,7 +8,7 @@
 
         <div class="quantity">
             <button class="btn-quantity" data-change="-1">-</button>
-            <input id="product-qty" type="number" min="1" max="{{stock}}" value="1" readonly>
+            <input id="product-qty" type="number" min="1" max="{{productStock}}" value="1" readonly>
             <button class="btn-quantity" data-change="1">+</button>
         </div>
 
